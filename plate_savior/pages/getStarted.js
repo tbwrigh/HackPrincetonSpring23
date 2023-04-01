@@ -296,7 +296,7 @@ const GetStartedPage = () => {
         meals.push('dessert');
       }
 
-      // Save list of allergens to async storage
+      // Save list of allergens, cuisines, and meals to async storage
       await AsyncStorage.setItem('allergens', JSON.stringify(allergens));
       await AsyncStorage.setItem('cuisines', JSON.stringify(cuisines));
       await AsyncStorage.setItem('meals', JSON.stringify(meals));
