@@ -501,7 +501,7 @@ const GetStartedPage = () => {
             <View style={styles.row}>
               <View style={styles.left}></View>
               <Checkbox style={styles.checkbox} value={amishChecked} onValueChange={setAmishChecked} />
-              <Text>Amish/Mennonite</Text>
+              <Text>Amish</Text>
               </View>
 
             <View style={styles.row}>
@@ -812,7 +812,7 @@ const GetStartedPage = () => {
         
         <View style={{marginBottom: 20}}>
         <TextInput
-          style={{height: 10}}
+          style={{height: 20}}
           maxLength = {2}
           placeholder="Enter Here"
           onChangeText={newText => setText(newText)}

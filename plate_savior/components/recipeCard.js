@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 
 const RecipeCard = ({ recipe }) => {
   // let { cuisine,meal,name,total_time,prep_time,cook_time,difficulty,serving,rating,ingredients,steps,calories, cost } = recipeProp;
+
+  const navigation = useNavigation();
 
   const [saved, setSaved] = useState(false);
 
@@ -37,7 +40,13 @@ const RecipeCard = ({ recipe }) => {
   }, []);
 
 
+  const handleCardPress = () => {
+    console.log(recipe)
+    navigation.navigate('RecipeDetail', { recipe });
+  }
+
   return (
+    <TouchableOpacity onPress={() => handleCardPress(recipe.id)}>
     <View style={styles.container}>
       <TouchableOpacity
         style={[styles.saveButton, saved && styles.saveButtonSaved]}
@@ -68,6 +77,7 @@ const RecipeCard = ({ recipe }) => {
         </View>
       </View>
     </View>
+    </TouchableOpacity>
   );
 };
 
