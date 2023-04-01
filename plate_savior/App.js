@@ -39,7 +39,7 @@ export default function App() {
         <Stack.Screen name="GetStartedPage" component={GetStartedPage} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
         <Stack.Screen name="Settings" component={GetStartedPage} options={{ headerShown: false }} />
-        <Stack.Screen name="RecipeDetail" component={RecipeDetail} initialParams={{ r: {} }}  />
+        <Stack.Screen name="RecipeDetail" component={RecipeDetail} initialParams={{ r: {name: "dog"} }}  />
       </Stack.Navigator>
     </NavigationContainer>
   );

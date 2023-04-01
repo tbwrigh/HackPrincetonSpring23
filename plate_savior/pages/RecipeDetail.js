@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const RecipeDetail = ({ recipe }) => {
-    console.log(recipe)
+const RecipeDetail = () => {
+  const [recipe, setRecipe] = useState({});
+
+  useEffect(() => {
+    async function getRecipe() {
+      const recipe = await AsyncStorage.getItem('detail');
+      setRecipe(JSON.parse(recipe));
+    }
+    getRecipe();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{recipe.name}</Text>
-      <Text style={styles.description}>{recipe.description}</Text>
-      <Text style={styles.ingredients}>{recipe.ingredients}</Text>
-      <Text style={styles.instructions}>{recipe.instructions}</Text>
+      <Text style={styles.subtitle}>{recipe.cuisine} {recipe.meal}</Text>
+      {recipe.ingredients.map((ingredient, index) => {
+          return (
+            <Text key={index} style={styles.ingredients}>{ingredient[1]} {ingredient[0]}</Text>
+          );
+        })}
+      {recipe.steps.map((step, index) => {
+          return (
+            <Text key={index} style={styles.ingredients}>{step}</Text>
+          );
+        })}
       <Text style={styles.nutrition}>{recipe.nutrition}</Text>
     </View>
   );

@@ -26,6 +26,11 @@ const RecipeCard = ({ recipe }) => {
     }
   };
 
+  const showDetail = async () => {
+    await AsyncStorage.setItem('detail', JSON.stringify(recipe));
+    navigation.navigate("RecipeDetail");
+  }
+
   useEffect(() => {
     async function checkSaved() {
       let recipes = await AsyncStorage.getItem('saved_recipes');
@@ -39,14 +44,7 @@ const RecipeCard = ({ recipe }) => {
     checkSaved();
   }, []);
 
-
-  const handleCardPress = () => {
-    console.log(recipe)
-    navigation.navigate('RecipeDetail', { recipe });
-  }
-
   return (
-    <TouchableOpacity onPress={() => handleCardPress(recipe.id)}>
     <View style={styles.container}>
       <TouchableOpacity
         style={[styles.saveButton, saved && styles.saveButtonSaved]}
@@ -56,7 +54,7 @@ const RecipeCard = ({ recipe }) => {
       </TouchableOpacity>
 
       <Text>recipe</Text>
-      <Text style={styles.title}>{recipe["name"]}</Text>
+      <TouchableOpacity onPress={showDetail}><Text style={styles.title}>{recipe["name"]}</Text></TouchableOpacity>
       <Text style={styles.subtitle}>{recipe["cuisine"]} {recipe["meal"]}</Text>
       <View style={styles.infoContainer}>
         <View style={styles.info}>
@@ -77,7 +75,6 @@ const RecipeCard = ({ recipe }) => {
         </View>
       </View>
     </View>
-    </TouchableOpacity>
   );
 };
 
