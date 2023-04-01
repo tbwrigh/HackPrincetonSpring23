@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Slider, Button } from 'react-native';
+import { StyleSheet, Text, View, Slider, Button, StatusBar } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Checkbox from 'expo-checkbox';
 
 
 const GetStartedPage = () => {
@@ -12,6 +13,16 @@ const GetStartedPage = () => {
   const [skillLevel, setSkillLevel] = useState(1);
   const [timeToCook, setTimeToCook] = useState(0);
   const [allergen, setAllergen] = useState('none');
+  const [noneChecked, setNoneChecked] = useState(false);
+  const [dairyChecked, setDairyChecked] = useState(false);
+  const [eggsChecked, setEggsChecked] = useState(false);
+  const [fishChecked, setFishChecked] = useState(false);
+  const [glutenChecked, setGlutenChecked] = useState(false);
+  const [peanutsChecked, setPeanutsChecked] = useState(false);
+  const [shellfishChecked, setShellfishChecked] = useState(false);
+  const [soyChecked, setSoyChecked] = useState(false);
+  const [treeChecked, setTreeChecked] = useState(false);
+  const [wheatChecked, setWheatChecked] = useState(false);
 
   const handleSetUpPress = async () => {
     try {
@@ -88,29 +99,79 @@ const GetStartedPage = () => {
           <Text>120+ min</Text>
         </View>
       </View>
+
       <View style={styles.pickerContainer}>
+        <View>
         <Text style={styles.pickerLabel}>Common Allergens:</Text>
-        <Picker
-          selectedValue={allergen}
-          onValueChange={(itemValue, itemIndex) => setAllergen(itemValue)}
-            style={styles.picker}
-        >
-            <Picker.Item label="None" value="none" />
-            <Picker.Item label="Dairy" value="dairy" />
-            <Picker.Item label="Eggs" value="eggs" />
-
-            <Picker.Item label="Fish" value="fish" />
-            <Picker.Item label="Gluten" value="gluten" />
-            <Picker.Item label="Peanuts" value="peanuts" />
-            <Picker.Item label="Shellfish" value="shellfish" />
-            <Picker.Item label="Soy" value="soy" />
-            <Picker.Item label="Tree Nuts" value="tree nuts" />
-            <Picker.Item label="Wheat" value="wheat" />
-        </Picker>
-
-        <Button title="Set Up" onPress={handleSetUpPress} />
-
         </View>
+      </View>
+
+      <View style={styles.contain}>
+        <View style={styles.column}>
+          <View style={styles.row}>
+            <View style={styles.left}></View>
+            <Checkbox style={styles.checkbox} value={noneChecked} onValueChange={setNoneChecked} />
+            <Text>None</Text>
+          </View>
+
+          <View style={styles.row}>
+            <View style={styles.left}></View>
+            <Checkbox style={styles.checkbox} value={dairyChecked} onValueChange={setDairyChecked} />
+            <Text>Dairy</Text>
+          </View>
+
+          <View style={styles.row}>
+            <View style={styles.left}></View>
+            <Checkbox style={styles.checkbox} value={eggsChecked} onValueChange={setEggsChecked} />
+            <Text>Eggs</Text>
+          </View>
+    
+          <View style={styles.row}>
+            <View style={styles.left}></View>
+            <Checkbox style={styles.checkbox} value={fishChecked} onValueChange={setFishChecked} />
+            <Text>Fish</Text>
+          </View>
+        
+          <View style={styles.row}>
+            <View style={styles.left}></View>
+            <Checkbox style={styles.checkbox} value={glutenChecked} onValueChange={setGlutenChecked} />
+            <Text>Gluten</Text>
+          </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={peanutsChecked} onValueChange={setPeanutsChecked} />
+            <Text>Peanuts</Text>
+          </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={shellfishChecked} onValueChange={setShellfishChecked} />
+            <Text>Shellfish</Text>
+          </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={soyChecked} onValueChange={setSoyChecked} />
+            <Text>Soy</Text>
+          </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={treeChecked} onValueChange={setTreeChecked} />
+            <Text>Tree Nuts</Text>
+          </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Wheat</Text>
+          </View>
+      </View>
+    </View>
+
+      <Button title="Set Up" onPress={handleSetUpPress} />
+
     </View>
     );
 };
@@ -121,6 +182,40 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    contain: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    column: {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      justifyContent: 'flex-start',
+      marginTop: 20,
+      marginBottom: 20,
+      marginLeft: 30,
+      marginRight: 30, 
+    },
+    row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        marginTop: 5,
+        marginBottom: 5,
+    },
+    checkbox: {
+        // margin: 8,
+        // marginLeft: 20,
+        marginRight: 10,
+    },
+    left: {
+      marginLeft: -80,
+    },
+    right: {
+      marginRight: 80,
+      marginTop: -60,
     },
     title: {
         fontSize: 30,
