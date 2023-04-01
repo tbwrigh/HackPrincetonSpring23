@@ -33,7 +33,7 @@ const AddRecipes = () => {
 
   return (
     <View style={styles.container}>
-      <Text>{recipes}</Text>
+      <Text>{data}</Text>
     </View>
   );
 };
