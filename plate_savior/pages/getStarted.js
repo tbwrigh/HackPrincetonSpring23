@@ -272,296 +272,299 @@ const GetStartedPage = () => {
             </View>
 
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={italianChecked} onValueChange={setItalianChecked} />
             <Text>Italian</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={chineseChecked} onValueChange={setChineseChecked} />
             <Text>Chinese</Text>
             </View>
 
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={indianChecked} onValueChange={setIndianChecked} />
             <Text>Indian</Text>
             </View>
 
           <View style={styles.row}>
-            <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={germanChecked} onValueChange={setGermanhecked} />
+            <View style={styles.left}></View>
+            <Checkbox style={styles.checkbox} value={germanChecked} onValueChange={setGermanChecked} />
             <Text>German</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={greekChecked} onValueChange={setGreekChecked} />
             <Text>Greek</Text>
             </View>
 
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={filipinoChecked} onValueChange={setFilipinoChecked} />
             <Text>Filipino</Text>
             </View>
 
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={japaneseChecked} onValueChange={setJapaneseChecked} />
             <Text>Japanese</Text>
             </View>
 
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={amishChecked} onValueChange={setAmishChecked} />
             <Text>Amish/Mennonite</Text>
             </View>
 
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={argentinianChecked} onValueChange={setArgentinianChecked} />
             <Text>Argentinian</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={ausnzChecked} onValueChange={setausnzChecked} />
+            <View style={styles.left}></View>
+            <Checkbox style={styles.checkbox} value={ausnzChecked} onValueChange={setAusnzChecked} />
             <Text>Australian/New Zealander</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={austrianChecked} onValueChange={setAustrianChecked} />
             <Text>Austrian</Text>
             </View>
 
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={bangladeshiChecked} onValueChange={setBangladeshiChecked} />
             <Text>Bangladeshi</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={belgianChecked} onValueChange={setBelgianChecked} />
             <Text>Belgian</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={brazilianChecked} onValueChange={setBrazilianChecked} />
             <Text>Brazilian</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={cajunChecked} onValueChange={setCajunChecked} />
             <Text>Cajun/Creole</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={canadianChecked} onValueChange={setCanadianChecked} />
             <Text>Canadian</Text>
             </View>
 
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={chileanChecked} onValueChange={setChileanChecked} />
             <Text>Chilean</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={colombianChecked} onValueChange={setColombianChecked} />
             <Text>Colombian</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={cubanChecked} onValueChange={setCubanChecked} />
             <Text>Cuban</Text>
             </View>
 
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={danishChecked} onValueChange={setDanishChecked} />
             <Text>Danish</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={dutchChecked} onValueChange={setDutchChecked} />
             <Text>Dutch</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={finnishChecked} onValueChange={setFinnishChecked} />
             <Text>Finnish</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={frenchChecked} onValueChange={setFrenchChecked} />
             <Text>French</Text>
             </View>
           
           <View style={styles.row}>
-            <View style={styles.right}></View>
+            <View style={styles.left}></View>
             <Checkbox style={styles.checkbox} value={indonesianChecked} onValueChange={setIndonesianChecked} />
             <Text>Indonesian</Text>
             </View>
           
+          </View>
+          <View style={styles.column}>
+
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setIsraeliChecked} />
             <Text>Israeli</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setJamaicanChecked} />
             <Text>Jamaican</Text>
             </View>
 
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setJewishChecked} />
             <Text>Jewish</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setKoreanChecked} />
             <Text>Korean</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setLebaneseChecked} />
             <Text>Lebanese</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setMalaysianChecked} />
             <Text>Malaysian</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setNorwegianChecked} />
             <Text>Norwegian</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setPakistaniChecked} />
             <Text>Pakistani</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setPersanChecked} />
             <Text>Persian</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setPeruvianChecked} />
             <Text>Peruvian</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setPolishChecked} />
             <Text>Polish</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setPortugueseChecked} />
             <Text>Portuguese</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setPuertoChecked} />
             <Text>Puerto Rican</Text>
             </View>
 
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setRussianChecked} />
             <Text>Russian</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setScandinavianChecked} />
             <Text>Scandinavian</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setSoulChecked} />
             <Text>Soul Food</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setSAfricanChecked} />
             <Text>South African</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setSouthernChecked} />
             <Text>Southern Recipes</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setSpanishChecked} />
             <Text>Spanish</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setSwedishChecked} />
             <Text>Swedish</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setSwissChecked} />
             <Text>Swiss</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setTexChecked} />
             <Text>Tex-Mex</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setThaiChecked} />
             <Text>Thai</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setTurkishChecked} />
             <Text>Turkish</Text>
             </View>
           
           <View style={styles.row}>
             <View style={styles.right}></View>
-            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setVietnameseChecked} />
             <Text>Vietnamese</Text>
             </View>
           </View>
