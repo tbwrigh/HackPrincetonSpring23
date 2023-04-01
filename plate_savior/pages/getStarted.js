@@ -23,6 +23,57 @@ const GetStartedPage = () => {
   const [treeChecked, setTreeChecked] = useState(false);
   const [wheatChecked, setWheatChecked] = useState(false);
 
+  const [mexicanChecked, setMexicanChecked] = useState(false);
+  const [italianChecked, setItalianChecked] = useState(false);
+  const [chineseChecked, setChineseChecked] = useState(false);
+  const [indianChecked, setIndianChecked] = useState(false);
+  const [germanChecked, setGermanChecked] = useState(false);
+  const [greekChecked, setGreekChecked] = useState(false);
+  const [filipinoChecked, setFilipinoChecked] = useState(false);
+  const [japaneseChecked, setJapaneseChecked] = useState(false);
+  const [amishChecked, setAmishChecked] = useState(false);
+  const [argentinianChecked, setArgentinianChecked] = useState(false);
+  const [ausnzChecked, setAusnzChecked] = useState(false);
+  const [austrianChecked, setAustrianChecked] = useState(false);
+  const [bangladeshiChecked, setBangladeshiChecked] = useState(false);
+  const [belgianChecked, setBelgianChecked] = useState(false);
+  const [brazilianChecked, setBrazilianChecked] = useState(false);
+  const [cajunChecked, setCajunChecked] = useState(false);
+  const [canadianChecked, setCanadianChecked] = useState(false);
+  const [chileanChecked, setChileanChecked] = useState(false);
+  const [colombianChecked, setColombianChecked] = useState(false);
+  const [cubanChecked, setCubanChecked] = useState(false);
+  const [danishChecked, setDanishChecked] = useState(false);
+  const [dutchChecked, setDutchChecked] = useState(false);
+  const [finnishChecked, setFinnishChecked] = useState(false);
+  const [frenchChecked, setFrenchChecked] = useState(false);
+  const [indonesianChecked, setIndonesianChecked] = useState(false);
+  const [israeliChecked, setIsraeliChecked] = useState(false);
+  const [jamaicanChecked, setJamaicanChecked] = useState(false);
+  const [jewishChecked, setJewishChecked] = useState(false);
+  const [koreanChecked, setKoreanChecked] = useState(false);
+  const [lebaneseChecked, setLebaneseChecked] = useState(false);
+  const [malaysianChecked, setMalaysianChecked] = useState(false);
+  const [norwegianChecked, setNorwegianChecked] = useState(false);
+  const [pakistaniChecked, setPakistaniChecked] = useState(false);
+  const [persianChecked, setPersanChecked] = useState(false);
+  const [peruvianChecked, setPeruvianChecked] = useState(false);
+  const [polishChecked, setPolishChecked] = useState(false);
+  const [portugueseChecked, setPortugueseChecked] = useState(false);
+  const [puertoChecked, setPuertoChecked] = useState(false);
+  const [russianChecked, setRussianChecked] = useState(false);
+  const [scandinavianChecked, setScandinavianChecked] = useState(false);
+  const [soulChecked, setSoulChecked] = useState(false);
+  const [safricanChecked, setSAfricanChecked] = useState(false);
+  const [southernChecked, setSouthernChecked] = useState(false);
+  const [spanishChecked, setSpanishChecked] = useState(false);
+  const [swedishChecked, setSwedishChecked] = useState(false);
+  const [swissChecked, setSwissChecked] = useState(false);
+  const [texChecked, setTexChecked] = useState(false);
+  const [thaiChecked, setThaiChecked] = useState(false);
+  const [turkishChecked, setTurkishChecked] = useState(false);
+  const [vietnameseChecked, setVietnameseChecked] = useState(false);
+
   const handleSetUpPress = async () => {
     try {
       // Save values to async storage
@@ -206,6 +257,316 @@ const GetStartedPage = () => {
       </View>
     </View>
 
+    <View style={styles.pickerContainer}>
+        <View>
+        <Text style={styles.pickerLabel}>Cuisine Type:</Text>
+        </View>
+      </View>
+
+      <View style={styles.check_contain}>
+        <View style={styles.column}>
+          <View style={styles.row}>
+            <View style={styles.left}></View>
+            <Checkbox style={styles.checkbox} value={mexicanChecked} onValueChange={setMexicanChecked} />
+            <Text>Mexican</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={italianChecked} onValueChange={setItalianChecked} />
+            <Text>Italian</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={chineseChecked} onValueChange={setChineseChecked} />
+            <Text>Chinese</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={indianChecked} onValueChange={setIndianChecked} />
+            <Text>Indian</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={germanChecked} onValueChange={setGermanhecked} />
+            <Text>German</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={greekChecked} onValueChange={setGreekChecked} />
+            <Text>Greek</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={filipinoChecked} onValueChange={setFilipinoChecked} />
+            <Text>Filipino</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={japaneseChecked} onValueChange={setJapaneseChecked} />
+            <Text>Japanese</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={amishChecked} onValueChange={setAmishChecked} />
+            <Text>Amish/Mennonite</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={argentinianChecked} onValueChange={setArgentinianChecked} />
+            <Text>Argentinian</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={ausnzChecked} onValueChange={setausnzChecked} />
+            <Text>Australian/New Zealander</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={austrianChecked} onValueChange={setAustrianChecked} />
+            <Text>Austrian</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={bangladeshiChecked} onValueChange={setBangladeshiChecked} />
+            <Text>Bangladeshi</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={belgianChecked} onValueChange={setBelgianChecked} />
+            <Text>Belgian</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={brazilianChecked} onValueChange={setBrazilianChecked} />
+            <Text>Brazilian</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={cajunChecked} onValueChange={setCajunChecked} />
+            <Text>Cajun/Creole</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={canadianChecked} onValueChange={setCanadianChecked} />
+            <Text>Canadian</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={chileanChecked} onValueChange={setChileanChecked} />
+            <Text>Chilean</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={colombianChecked} onValueChange={setColombianChecked} />
+            <Text>Colombian</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={cubanChecked} onValueChange={setCubanChecked} />
+            <Text>Cuban</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={danishChecked} onValueChange={setDanishChecked} />
+            <Text>Danish</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={dutchChecked} onValueChange={setDutchChecked} />
+            <Text>Dutch</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={finnishChecked} onValueChange={setFinnishChecked} />
+            <Text>Finnish</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={frenchChecked} onValueChange={setFrenchChecked} />
+            <Text>French</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={indonesianChecked} onValueChange={setIndonesianChecked} />
+            <Text>Indonesian</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Israeli</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Jamaican</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Jewish</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Korean</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Lebanese</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Malaysian</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Norwegian</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Pakistani</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Persian</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Peruvian</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Polish</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Portuguese</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Puerto Rican</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Russian</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Scandinavian</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Soul Food</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>South African</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Southern Recipes</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Spanish</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Swedish</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Swiss</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Tex-Mex</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Thai</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Turkish</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={wheatChecked} onValueChange={setWheatChecked} />
+            <Text>Vietnamese</Text>
+            </View>
+          </View>
+        </View>
+      
       <Button title="Set Up" onPress={handleSetUpPress} />
 
     </View>
