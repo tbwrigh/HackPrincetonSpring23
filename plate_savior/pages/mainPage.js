@@ -1,8 +1,18 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from "@react-navigation/native";
+import { useEffect } from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function MainPage() {
+import AddRecipes from './addRecipes';
+import PlanMeals from './planMeals';
+import ShoppingList from './shoppingList';
+
+
+const Tab = createBottomTabNavigator();
+
+const MainPage = () => {
     const navigation = useNavigation();
 
     useEffect(() => {navigation.setOptions({
@@ -10,39 +20,41 @@ export default function MainPage() {
       })}, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to Plate Savior!</Text>
-      <Text style={styles.subtitle}>Your personalized meal planning assistant</Text>
-      <View style={styles.content}>
-        <Text style={styles.text}>Here are your meal suggestions for the week:</Text>
-        {/* List of meal suggestions would go here */}
-      </View>
-    </View>
+    <Tab.Navigator
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
+
+        if (route.name === 'Add') {
+          iconName = 'add-circle';
+        } else if (route.name === 'Plan') {
+          iconName = 'calendar';
+        } else if (route.name === 'Shop') {
+          iconName = 'cart';
+        }
+
+        return <Ionicons name={iconName} size={size} color={color} />;
+      },
+      headerRight: () => (
+        <MaterialCommunityIcons 
+          name="cog" 
+          size={24} 
+          color="black" 
+          style={{marginRight: 10}} 
+          onPress={() => navigation.navigate('Settings')}
+        />
+      ),
+    })}
+    tabBarOptions={{
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
+    }}
+    >
+      <Tab.Screen name="Add" component={AddRecipes} />
+      <Tab.Screen name="Plan" component={PlanMeals} />
+      <Tab.Screen name="Shop" component={ShoppingList} />
+    </Tab.Navigator>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 16,
-    marginBottom: 20,
-  },
-  content: {
-    paddingHorizontal: 20,
-  },
-  text: {
-    fontSize: 18,
-    marginBottom: 10,
-  },
-});
-
+export default MainPage;
