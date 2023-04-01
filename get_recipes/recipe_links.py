@@ -180,6 +180,7 @@ for url in links:
         source = urllib.request.urlopen(str(url.get("href"))).read()
         soup = bs.BeautifulSoup(source,'lxml')
         cuisine = url.text.strip()
+        print(cuisine)
         for url in soup.find_all('a'):
             if 'recipe/' in str(url.get('href')):
 
@@ -201,6 +202,6 @@ for url in links:
                     'cost': get_cost(ingredients)
                 }
 
-                # print(recipe)
+                #print(recipe)
 
-                insert_one_recipe(recipe)
+                # insert_one_recipe(recipe)
