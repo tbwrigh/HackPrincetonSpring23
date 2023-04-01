@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Calendar from '../components/calendar';
 
 const PlanMeals = () => {
+
   return (
     <View style={styles.container}>
-      <Text>plan your meals</Text>
+      < Calendar />
     </View>
+
   );
 };
 
@@ -16,6 +19,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
     },
+
   });
   
   export default PlanMeals;

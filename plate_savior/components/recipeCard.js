@@ -51,9 +51,9 @@ const RecipeCard = ({ recipe }) => {
       >
         <Ionicons name={saved ? "checkmark" : "add"} size={24} color="white" />
       </TouchableOpacity>
-
+      <TouchableOpacity onPress={showDetail}>
       <Text>recipe</Text>
-      <TouchableOpacity onPress={showDetail}><Text style={styles.title}>{recipe["name"]}</Text></TouchableOpacity>
+      <Text style={styles.title}>{recipe["name"]}</Text>
       <Text style={styles.subtitle}>{recipe["cuisine"]} {recipe["meal"]}</Text>
       <View style={styles.infoContainer}>
         <View style={styles.info}>
@@ -73,6 +73,7 @@ const RecipeCard = ({ recipe }) => {
           <Text style={styles.infoText}>{recipe["calories"]}</Text>
         </View>
       </View>
+      </TouchableOpacity>
     </View>
   );
 };

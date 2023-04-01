@@ -6,6 +6,7 @@ import { AsyncStorage } from 'react-native';
 import Main from './pages/mainPage';
 import GetStartedPage from './pages/getStarted';
 import RecipeDetail from './pages/RecipeDetail';
+import SelectRecipe from './pages/selectRecipe';
 
 const Stack = createStackNavigator();
 
@@ -40,6 +41,7 @@ export default function App() {
         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
         <Stack.Screen name="Settings" component={GetStartedPage} options={{ headerShown: false }} />
         <Stack.Screen name="RecipeDetail" component={RecipeDetail} initialParams={{ r: {name: "dog"} }}  />
+        <Stack.Screen name="SelectRecipe" component={SelectRecipe} initialParams={{rs: {name: "dog"}}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

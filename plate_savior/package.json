@@ -16,6 +16,7 @@
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/stack": "^6.3.16",
+    "date-and-time": "^2.4.3",
     "expo": "~48.0.9",
     "expo-checkbox": "^2.3.1",
     "expo-status-bar": "~1.4.4",

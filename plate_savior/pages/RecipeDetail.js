@@ -2,8 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 
 const RecipeDetail = (rp) => {
-  console.log("RecipeDetail")
-  console.log(rp)
 
   recipe = rp["route"]["params"]["rp"]
 

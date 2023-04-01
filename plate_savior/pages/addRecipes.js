@@ -46,7 +46,7 @@ const AddRecipes = () => {
     }}
     >
       {data.map((recipe) => (
-        <RecipeCard recipe={recipe} />
+        <RecipeCard recipe={recipe} key={recipe["_id"]} />
       ))}
     </ScrollView>
   );
