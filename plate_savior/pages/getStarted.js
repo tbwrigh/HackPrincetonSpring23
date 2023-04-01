@@ -12,7 +12,6 @@ const GetStartedPage = () => {
   const [price, setPrice] = useState(1);
   const [skillLevel, setSkillLevel] = useState(1);
   const [timeToCook, setTimeToCook] = useState(0);
-  const [allergen, setAllergen] = useState('none');
   const [noneChecked, setNoneChecked] = useState(false);
   const [dairyChecked, setDairyChecked] = useState(false);
   const [eggsChecked, setEggsChecked] = useState(false);
@@ -30,8 +29,43 @@ const GetStartedPage = () => {
       await AsyncStorage.setItem('price', price.toString());
       await AsyncStorage.setItem('skillLevel', skillLevel.toString());
       await AsyncStorage.setItem('timeToCook', timeToCook.toString());
-      await AsyncStorage.setItem('allergen', allergen);
       await AsyncStorage.setItem('setup', 'true');
+
+      // build list of all allergens set to true
+      let allergens = [];
+      if (noneChecked) {
+        allergens.push('none');
+      }
+      if (dairyChecked) {
+        allergens.push('dairy');
+      }
+      if (eggsChecked) {
+        allergens.push('eggs');
+      }
+      if (fishChecked) {
+        allergens.push('fish');
+      }
+      if (glutenChecked) {
+        allergens.push('gluten');
+      }
+      if (peanutsChecked) {
+        allergens.push('peanuts');
+      }
+      if (shellfishChecked) {
+        allergens.push('shellfish');
+      }
+      if (soyChecked) {
+        allergens.push('soy');
+      }
+      if (treeChecked) {
+        allergens.push('tree nuts');
+      }
+      if (wheatChecked) {
+        allergens.push('wheat');
+      }
+
+      // Save list of allergens to async storage
+      await AsyncStorage.setItem('allergens', JSON.stringify(allergens));
 
       navigation.navigate('Main');
     } catch (error) {
@@ -67,7 +101,7 @@ const GetStartedPage = () => {
           value={skillLevel}
           onValueChange={(value) => setSkillLevel(value)}
           minimumValue={1}
-          maximumValue={5}
+          maximumValue={4}
           step={1}
           thumbStyle={styles.thumbStyle}
           minimumTrackTintColor="#007aff"
