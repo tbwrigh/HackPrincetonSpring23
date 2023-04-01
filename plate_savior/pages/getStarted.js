@@ -212,10 +212,15 @@ const styles = StyleSheet.create({
     },
     left: {
       marginLeft: -80,
+      paddingBottom: -100,
+      paddingRight: 50,
+      paddingTop: 20,
     },
     right: {
-      marginRight: 80,
-      marginTop: -60,
+      marginRight: 100,
+      lineHeight: 50,
+      paddingRight: 40,
+      paddingTop: 40,
     },
     title: {
         fontSize: 30,
