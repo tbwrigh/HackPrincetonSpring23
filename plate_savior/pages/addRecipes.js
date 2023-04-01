@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { AsyncStorage } from '@react-native-async-storage/async-storage';
 
 const AddRecipes = () => {
-  let recipes = [];
+  const [data, setData] = useState([]);
   let cost, skill, time, allergens, cuisine;
 
   useEffect(() => {
@@ -24,6 +24,7 @@ const AddRecipes = () => {
     res = await fetch('http://10.25.13.105:3000/query/' + "$".repeat(cost) + "/" + skill + "/" + cuisine);
     console.log(res);
     recipes = await res.json();
+    setData(recipes);
     }
     console.log("fetching data")
     fetchData();
