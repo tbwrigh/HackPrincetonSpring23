@@ -1,19 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Slider, Button } from 'react-native';
-import MultiSelect from 'react-native-multiple-select';
+import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const allergens = [
-    { id: '1', name: 'Eggs' },
-    { id: '2', name: 'Fish' },
-    { id: '3', name: 'Milk' },
-    { id: '4', name: 'Peanuts' },
-    { id: '5', name: 'Shellfish' },
-    { id: '6', name: 'Soy' },
-    { id: '7', name: 'Tree Nuts' },
-    { id: '8', name: 'Wheat' },
-  ];
 
 const GetStartedPage = () => {
   const navigation = useNavigation();
@@ -21,12 +11,7 @@ const GetStartedPage = () => {
   const [price, setPrice] = useState(1);
   const [skillLevel, setSkillLevel] = useState(1);
   const [timeToCook, setTimeToCook] = useState(0);
-  const [selectedAllergens, setSelectedAllergens] = useState([]);
-
-  const handleSelectedItemsChange = (selectedItems) => {
-    console.log(selectedItems);
-  }
-
+  const [allergen, setAllergen] = useState('none');
 
   const handleSetUpPress = async () => {
     try {
@@ -105,27 +90,23 @@ const GetStartedPage = () => {
       </View>
       <View style={styles.pickerContainer}>
         <Text style={styles.pickerLabel}>Common Allergens:</Text>
-        <View style={styles.pickerContainer}>
-        <MultiSelect
-  items={allergens}
-  uniqueKey='value'
-  onSelectedItemsChange={selectedItems => setSelectedAllergens(selectedItems)}
-  selectedItems={selectedAllergens}
-  selectText='Select Allergens'
-  searchInputPlaceholderText='Search Allergens...'
-  tagRemoveIconColor='#CCC'
-  tagBorderColor='#CCC'
-  tagTextColor='#CCC'
-  selectedItemTextColor='#CCC'
-  selectedItemIconColor='#CCC'
-  itemTextColor='#000'
-  displayKey='label'
-  searchInputStyle={{ color: '#CCC' }}
-  submitButtonColor='#CCC'
-  submitButtonText='Submit'
-/>
-      </View>
+        <Picker
+          selectedValue={allergen}
+          onValueChange={(itemValue, itemIndex) => setAllergen(itemValue)}
+            style={styles.picker}
+        >
+            <Picker.Item label="None" value="none" />
+            <Picker.Item label="Dairy" value="dairy" />
+            <Picker.Item label="Eggs" value="eggs" />
 
+            <Picker.Item label="Fish" value="fish" />
+            <Picker.Item label="Gluten" value="gluten" />
+            <Picker.Item label="Peanuts" value="peanuts" />
+            <Picker.Item label="Shellfish" value="shellfish" />
+            <Picker.Item label="Soy" value="soy" />
+            <Picker.Item label="Tree Nuts" value="tree nuts" />
+            <Picker.Item label="Wheat" value="wheat" />
+        </Picker>
 
         <Button title="Set Up" onPress={handleSetUpPress} />
 
