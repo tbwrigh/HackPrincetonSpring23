@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Slider, Button, StatusBar, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Slider, Button, StatusBar, SafeAreaView, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -74,6 +74,15 @@ const GetStartedPage = () => {
   const [turkishChecked, setTurkishChecked] = useState(false);
   const [vietnameseChecked, setVietnameseChecked] = useState(false);
 
+  const [breakfastChecked, setBreakfastChecked] = useState(false);
+  const [lunchChecked, setLunchChecked] = useState(false);
+  const [dinnerChecked, setDinnerChecked] = useState(false);
+  const [appsChecked, setAppsChecked] = useState(false);
+  const [sidesChecked, setSidesChecked] = useState(false);
+  const [dessertChecked, setDessertChecked] = useState(false);
+
+  const [text, setText] = useState('');
+
   const handleSetUpPress = async () => {
     try {
       // Save values to async storage
@@ -127,7 +136,7 @@ const GetStartedPage = () => {
   return (
     <SafeAreaView style={styles.cont}>
        <ScrollView style={styles.scrollView}>
-      <View style={styles.container}>
+      <View style={styles.top}>
         <Text style={styles.title}>Get Started</Text>
         <View style={styles.sliderContainer}>
           <Text style={styles.sliderLabel}>Price Range:</Text>
@@ -330,7 +339,7 @@ const GetStartedPage = () => {
             <View style={styles.row}>
               <View style={styles.left}></View>
               <Checkbox style={styles.checkbox} value={ausnzChecked} onValueChange={setAusnzChecked} />
-              <Text>Australian/New Zealander</Text>
+              <Text>Australian</Text>
               </View>
             
             <View style={styles.row}>
@@ -572,6 +581,70 @@ const GetStartedPage = () => {
             </View>
           </View>
         
+        <View style={styles.pickerContainer}>
+            <View>
+            <Text style={styles.pickerLabel}>Meal Type:</Text>
+            </View>
+          </View>
+        
+        <View style={styles.check_contain}>
+        <View style={styles.column}>
+          <View style={styles.row}>
+            <View style={styles.left}></View>
+            <Checkbox style={styles.checkbox} value={breakfastChecked} onValueChange={setBreakfastChecked} />
+            <Text>Breakfast</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.left}></View>
+            <Checkbox style={styles.checkbox} value={lunchChecked} onValueChange={setLunchChecked} />
+            <Text>Lunch</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.left}></View>
+            <Checkbox style={styles.checkbox} value={dinnerChecked} onValueChange={setDinnerChecked} />
+            <Text>Dinner</Text>
+            </View>
+          
+          </View>
+          <View style={styles.column}>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={appsChecked} onValueChange={setAppsChecked} />
+            <Text>Appetizers</Text>
+            </View>
+
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={sidesChecked} onValueChange={setSidesChecked} />
+            <Text>Sides</Text>
+            </View>
+          
+          <View style={styles.row}>
+            <View style={styles.right}></View>
+            <Checkbox style={styles.checkbox} value={dessertChecked} onValueChange={setDessertChecked} />
+            <Text>Dessert</Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.pickerContainer}>
+            <View>
+            <Text style={styles.pickerLabel}>On average, how many people do you feed at a meal?</Text>
+            </View>
+          </View>
+        
+        <View style={{marginBottom: 20}}>
+        <TextInput
+          style={{height: 10}}
+          maxLength = {2}
+          placeholder="Enter Here"
+          onChangeText={newText => setText(newText)}
+          defaultValue={text}
+        />
+        </View>
       
           <Button title="Set Up" onPress={handleSetUpPress} />
 
@@ -597,6 +670,13 @@ const styles = StyleSheet.create({
     cont: {
       flex: 1,
       paddingTop: StatusBar.currentHeight,
+    },
+    top: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 11,
     },
     check_contain: {
       flexDirection: 'row',
