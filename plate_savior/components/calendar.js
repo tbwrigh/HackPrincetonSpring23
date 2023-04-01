@@ -8,17 +8,22 @@ const Day = ({ day, recipeIds }) => {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
   const handleRecipeSelect = () => {
+    storeDay(day);
     navigation.navigate('SelectRecipe', {recipes: recipeIds});
   }
 
-  const handleRecipeSelectPageSelect = (recipe) => {
-    setSelectedRecipe(recipeId);
+  const storeDay = async (day) => {
+    try {
+      await AsyncStorage.setItem('selectedDay', day);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
     <View style={styles.dayContainer}>
       <Text style={styles.dayText}>{day}</Text>
-      <TouchableOpacity onPress={() => handleRecipeSelect()}>
+      <TouchableOpacity onPress={() => handleRecipeSelect(day)}>
         <Text style={styles.buttonText}>Add Recipe</Text>
       </TouchableOpacity>
       {selectedRecipe && <Text>Selected Recipe: {selectedRecipe}</Text>}
@@ -29,6 +34,7 @@ const Day = ({ day, recipeIds }) => {
 const Calendar = () => {
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   let [recipeIds, setRecipeIds] = useState("");
+  let [dayRecipe, setDayRecipe] = useState({});
 
     // make method to get saved_recipes from AsyncStorage
     useEffect(() => {  
@@ -41,7 +47,32 @@ const Calendar = () => {
                 setRecipeIds("")
             }
         }
+        async function getDayRecipe() {
+            let day = await AsyncStorage.getItem('selectedDay');
+            let recipe = await AsyncStorage.getItem('selectedRecipe');
+            if (dayRecipe != null && recipe != null) {
+                let dr = await AsyncStorage.getItem('dayRecipe');
+                if (dr != null) {
+                    dayRecipe = JSON.parse(dr);
+                    if (dayRecipe[day] != null) {
+                        dayRecipe[day].push(recipe);
+                    }else {
+                        dayRecipe[day] = [recipe];
+                    }
+                    await AsyncStorage.setItem('dayRecipe', JSON.stringify(dayRecipe));
+                }else {
+                    dayRecipe = {};
+                    dayRecipe[day] = [recipe];
+                    await AsyncStorage.setItem('dayRecipe', JSON.stringify(dayRecipe));
+                }
+            }else {
+                await AsyncStorage.removeItem('selectedDay');
+                await AsyncStorage.removeItem('selectedRecipe');
+            }
+        }
+
         getRecipes();
+        getDayRecipe();
     }, []);
 
 
