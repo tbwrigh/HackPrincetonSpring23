@@ -174,13 +174,17 @@ def process_recipe(url):
 source = urllib.request.urlopen('https://www.allrecipes.com/cuisine-a-z-6740455').read()
 soup = bs.BeautifulSoup(source,'lxml')
 links = soup.find_all('a')
+meals = set()
 for url in links:
     #print(url.get('href'))
+
     if 'world-cuisine' in str(url.get("href")) or 'us-recipes' in str(url.get("href")):
         source = urllib.request.urlopen(str(url.get("href"))).read()
         soup = bs.BeautifulSoup(source,'lxml')
         cuisine = url.text.strip()
-        print(cuisine)
+        #print(cuisine)
+        names = set()
+        food = set()
         for url in soup.find_all('a'):
             if 'recipe/' in str(url.get('href')):
 
@@ -205,3 +209,14 @@ for url in links:
                 #print(recipe)
 
                 # insert_one_recipe(recipe)
+
+                meals.add(meal)
+        
+#print(meals)
+
+apps = ['Appetizers and Snacks', 'Dips and Spreads Recipes']
+sides = ['Soup Recipes', 'Soups, Stews and Chili Recipes', 'Salad', 'Vegetable Soup Recipes', 'Side Dish', 'Yeast Bread Recipes', 'Quick Bread Recipes', 'Bread']
+breakfast = ['Breakfast and Brunch']
+lunch = ['Slow Cooker', 'Main Dishes', 'Beef', 'Pork', 'Seafood Main Dishes', 'Vegetables', 'Pasta and Noodles', 'Casserole Recipes', 'Fruits and Vegetables', 'Seafood', 'Breakfast and Brunch', 'BBQ & Grilling', 'Meat and Poultry', 'Everyday Cooking', 'Soups, Stews and Chili Recipes', 'Pasta', 'Chicken', 'Cuisine', 'African', 'U.S Recipes', 'Thai', 'European', 'Japanese', 'Asian', 'Mexican', 'Korean', 'Indian', 'Latin American', 'Chinese', 'Italian', 'Spanish', 'Cuisine']
+dinner = ['Slow Cooker', 'Main Dishes', 'Beef', 'Pork', 'Seafood Main Dishes', 'Vegetables', 'Pasta and Noodles', 'Casserole Recipes', 'Fruits and Vegetables', 'Seafood', 'Dinner', 'BBQ & Grilling', 'Meat and Poultry', 'Everyday Cooking', 'Soups, Stews, and Chili Recipes', 'Pasta', 'Chicken', 'Cuisine', 'Christmas', 'Thanksgiving', 'Holidays and Events Recipes', 'African', 'U.S Recipes', 'Thai', 'European', 'Japanese', 'Asian', 'Mexican', 'Korean', 'Indian', 'Latin American', 'Chinese', 'Italian', 'Spanish', 'Cuisine']
+desserts = ['Fruit Bread Recipes', 'Desserts', 'Pies', 'Cookies']
