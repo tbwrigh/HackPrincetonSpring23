@@ -239,10 +239,12 @@ const styles = StyleSheet.create({
       alignItems: 'flex-start',
     },
     left: {
-      flex: 1,
+      flex: -0.5,
+      marginRight: 70,
     },
     right: {
-      flex: 1,
+      flex: 0,
+      marginRight: 30,
     },
     checkbox: {
       marginRight: 10,
