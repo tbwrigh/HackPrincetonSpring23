@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { AsyncStorage } from '@react-native-async-storage/async-storage';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, Text, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import RecipeCard from '../components/recipeCard';
 
 const AddRecipes = () => {
   const [data, setData] = useState([]);
@@ -8,33 +9,41 @@ const AddRecipes = () => {
 
   useEffect(() => {
     async function fetchData() {
-    console.log("fetch data begin")
+    // console.log("fetch data begin")
     // load values from AsyncStorage
     cost = await AsyncStorage.getItem('price');
     skill = await AsyncStorage.getItem('skillLevel');
     time = await AsyncStorage.getItem('timeToCook');
     allergens = await AsyncStorage.getItem('allergens');
-    cuisine = "tex-mex";
+    cuisine = "tex-mex,mexican";
 
     skill = skill == 1 ? "easy" : skill == 2 ? "medium" : skill == 3 ? "hard" : "expert";
 
-    console.log(cost, skill, time, allergens, cuisine);
     // fetch recipes from api
     // make get request to 10.25.13.105 
     res = await fetch('http://10.25.13.105:3000/query/' + "$".repeat(cost) + "/" + skill + "/" + cuisine);
-    console.log(res);
+    // console.log(res);
     recipes = await res.json();
-    setData(recipes);
+    // console.log(recipes["recipes"]);
+    setData(recipes["recipes"]);
     }
-    console.log("fetching data")
+    // console.log("fetching data")
     fetchData();
+    // console.log(data)
 
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>{data}</Text>
-    </View>
+    <ScrollView style={styles.container}
+    contentContainerStyle={{
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+    >
+      {data.map((recipe) => (
+        <RecipeCard recipe={recipe} />
+      ))}
+    </ScrollView>
   );
 };
 
@@ -42,8 +51,9 @@ const AddRecipes = () => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
+      marginTop: 20,
+      // justifyContent: 'center',
+      // alignItems: 'center',
     },
   });
   
