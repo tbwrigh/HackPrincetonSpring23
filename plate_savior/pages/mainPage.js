@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
 export default function MainPage() {
     const navigation = useNavigation();
-    
+
+    useEffect(() => {navigation.setOptions({
+        headerLeft: null,
+      })}, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Plate Savior!</Text>
