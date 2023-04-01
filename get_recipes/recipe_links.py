@@ -4,9 +4,69 @@ import urllib.request
 from urllib.request import urlopen
 
 from pymongo import MongoClient
+
+def time_str_to_int(time):
+    total = 0
+    time = time.split(" ")
+    if len(time) == 2:
+        if time[1] == "hr" or time[1] == "hrs":
+            return int(time[0]) * 60
+        elif time[1] == "min" or time[1] == "mins":
+            return int(time[0])
+    elif len(time) == 4:
+        return int(time[0]) * 60 + int(time[2])
+
+def get_difficulty(total_time, prep_time, cook_time, ingredients, steps):
+    if total_time == "?" or prep_time == "?" or cook_time == "?" or ingredients == "?" or steps == "?":
+        return "medium"
+    else:
+        total_time = time_str_to_int(total_time)
+        prep_time = time_str_to_int(prep_time)
+        cook_time = time_str_to_int(cook_time)
+
+        if total_time is None or prep_time is None or cook_time is None:
+            return "medium"
+
+        ingredients = len(ingredients)
+        steps = len(steps)
+        # return "easy" for 0-10, "medium" for 10-20, "hard" for 20-30 and "expert" for 30+ given scoring (prep_time+cook_time)/total_time * (ingredients + steps)
+        score = (prep_time + cook_time) / total_time * (ingredients + steps)
+        if score <= 10:
+            return "easy"
+        elif score <= 20:
+            return "medium"
+        elif score <= 30:
+            return "hard"
+        else:
+            return "expert"
+        
+    
+
+def get_cost(ing):
+    used = 3
+    cost = 1
+
+    for i in ing:
+        n = i[0].lower()
+        if "roast" in n or "shrimp" in n or "oyster" in n or "clam" in n or "fish" in n or "beef" in n or ("ground" in n and ("pork" not in n and "chicken" not in n and "turkey" not in n)):
+            cost += 4
+            used += 1
+        elif "cheese" in n or "butter" in n or "eggs" in n or "pork" in n:
+            cost += 3
+            used += 1
+        elif "chicken" in n or "milk" in n or "can" in n or "fresh" in n:
+            cost += 2
+            used += 1
+        elif "sugar" in n or "flour" in n or "turkey" in n or "bread" in n or "pasta" in n or "noodle" in n:
+            cost += 1
+            used += 1
+
+        return int(round(cost/used)) * "$"
+
+
 def get_database():
     # Provide the mongodb atlas url to connect python to mongodb using pymongo
-    client = MongoClient("mongodb+srv://user:oxRRaRUcFKOslIyM@hackprinceton.jweat5l.mongodb.net/?retryWrites=true&w=majority")
+    client = MongoClient("mongodb+srv://user:oxRRaRUcFKOslIyM@hackprinceton.vpkyri1.mongodb.net/?retryWrites=true&w=majority")
 
     # Create the database for our example (we will use the same database throughout the tutorial
     return client['hackprinceton']
@@ -132,12 +192,15 @@ for url in links:
                     'total_time': total_time,
                     'prep_time': prep_time,
                     'cook_time': cook_time,
-                    'difficulty': 4*float(prep_time)/float(total_time) if prep_time != "?" and total_time != "?" else "?",
+                    'difficulty': get_difficulty(total_time, prep_time, cook_time, ingredients, steps),
                     'serving': serving,
                     'rating': rating,
                     'ingredients': ingredients,
                     'steps': steps,
-                    'calories': calories
+                    'calories': calories,
+                    'cost': get_cost(ingredients)
                 }
+
+                # print(recipe)
 
                 insert_one_recipe(recipe)
