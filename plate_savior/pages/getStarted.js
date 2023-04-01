@@ -124,8 +124,182 @@ const GetStartedPage = () => {
         allergens.push('wheat');
       }
 
+      let cuisines = [];
+      if (mexicanChecked) {
+        cuisines.push('mexican');
+      }
+      if (italianChecked) {
+        cuisines.push('italian');
+      }
+      if (chineseChecked) {
+        cuisines.push('chinese');
+      }
+      if (indianChecked) {
+        cuisines.push('indian');
+      }
+      if (germanChecked) {
+        cuisines.push('german');
+      }
+      if (greekChecked) {
+        cuisines.push('greek');
+      }
+      if (filipinoChecked) {
+        cuisines.push('filpino');
+      }
+      if (japaneseChecked) {
+        cuisines.push('japanese');
+      }
+      if (amishChecked) {
+        cuisines.push('amish');
+      }
+      if (argentinianChecked) {
+        cuisines.push('argentinian');
+      }
+      if (ausnzChecked) {
+        cuisines.push('australian');
+      }
+      if (austrianChecked) {
+        cuisines.push('austrian');
+      }
+      if (bangladeshiChecked) {
+        cuisines.push('bangladeshi');
+      }
+      if (belgianChecked) {
+        cuisines.push('belgian');
+      }
+      if (brazilianChecked) {
+        cuisines.push('brazilian');
+      }
+      if (cajunChecked) {
+        cuisines.push('cajun');
+      }
+      if (canadianChecked) {
+        cuisines.push('canadian');
+      }
+      if (chileanChecked) {
+        cuisines.push('chilean');
+      }
+      if (colombianChecked) {
+        cuisines.push('colombian');
+      }
+      if (cubanChecked) {
+        cuisines.push('cuban');
+      }
+      if (danishChecked) {
+        cuisines.push('danish');
+      }
+      if (dutchChecked) {
+        cuisines.push('dutch');
+      }
+      if (finnishChecked) {
+        cuisines.push('finnish');
+      }
+      if (frenchChecked) {
+        cuisines.push('french');
+      }
+      if (indonesianChecked) {
+        cuisines.push('indonesian');
+      }
+      if (israeliChecked) {
+        cuisines.push('israeli');
+      }
+      if (jamaicanChecked) {
+        cuisines.push('jamaican');
+      }
+      if (jewishChecked) {
+        cuisines.push('jewish');
+      }
+      if (koreanChecked) {
+        cuisines.push('korean');
+      }
+      if (lebaneseChecked) {
+        cuisines.push('lebanese');
+      }
+      if (malaysianChecked) {
+        cuisines.push('malaysian');
+      }
+      if (norwegianChecked) {
+        cuisines.push('norwegian');
+      }
+      if (pakistaniChecked) {
+        cuisines.push('pakistani');
+      }
+      if (persianChecked) {
+        cuisines.push('persian');
+      }
+      if (peruvianChecked) {
+        cuisines.push('peruvian');
+      }
+      if (polishChecked) {
+        cuisines.push('polish');
+      }
+      if (portugueseChecked) {
+        cuisines.push('portuguese');
+      }
+      if (puertoChecked) {
+        cuisines.push('puerto');
+      }
+      if (russianChecked) {
+        cuisines.push('russian');
+      }
+      if (scandinavianChecked) {
+        cuisines.push('scandinavian');
+      }
+      if (soulChecked) {
+        cuisines.push('soul');
+      }
+      if (safricanChecked) {
+        cuisines.push('safrican');
+      }
+      if (southernChecked) {
+        cuisines.push('southern');
+      }
+      if (spanishChecked) {
+        cuisines.push('spanish');
+      }
+      if (swedishChecked) {
+        cuisines.push('swedish');
+      }
+      if (swissChecked) {
+        cuisines.push('swiss');
+      }
+      if (texChecked) {
+        cuisines.push('tex');
+      }
+      if (thaiChecked) {
+        cuisines.push('thai');
+      }
+      if (turkishChecked) {
+        cuisines.push('turkish');
+      }
+      if (vietnameseChecked) {
+        cuisines.push('vietnamese');
+      }
+
+      let meals = [];
+      if (breakfastChecked) {
+        meals.push('breakfast');
+      }
+      if (lunchChecked) {
+        meals.push('lunch');
+      }
+      if (dinnerChecked) {
+        meals.push('dinner');
+      }
+      if (appsChecked) {
+        meals.push('apps');
+      }
+      if (sidesChecked) {
+        meals.push('sides');
+      }
+      if (dessertChecked) {
+        meals.push('dessert');
+      }
+
       // Save list of allergens to async storage
       await AsyncStorage.setItem('allergens', JSON.stringify(allergens));
+      await AsyncStorage.setItem('cuisines', JSON.stringify(cuisines));
+      await AsyncStorage.setItem('meals', JSON.stringify(meals));
 
       navigation.navigate('Main');
     } catch (error) {
