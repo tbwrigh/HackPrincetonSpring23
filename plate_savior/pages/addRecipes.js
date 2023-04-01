@@ -15,7 +15,12 @@ const AddRecipes = () => {
     skill = await AsyncStorage.getItem('skillLevel');
     time = await AsyncStorage.getItem('timeToCook');
     allergens = await AsyncStorage.getItem('allergens');
-    cuisine = "tex-mex,mexican";
+    cuisines = await AsyncStorage.setItem('cuisines');
+    meals = await AsyncStorage.setItem('meals');
+    allergens = JSON.parse(allergens);
+    meals = JSON.parse(meals);
+    cuisines = JSON.parse(cuisines);
+    cuisine = cuisines.join(",");
 
     skill = skill == 1 ? "easy" : skill == 2 ? "medium" : skill == 3 ? "hard" : "expert";
 

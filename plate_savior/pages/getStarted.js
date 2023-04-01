@@ -89,6 +89,7 @@ const GetStartedPage = () => {
       await AsyncStorage.setItem('price', price.toString());
       await AsyncStorage.setItem('skillLevel', skillLevel.toString());
       await AsyncStorage.setItem('timeToCook', timeToCook.toString());
+      await AsyncStorage.setItem('usedServings', text.toString());
       await AsyncStorage.setItem('setup', 'true');
 
       // build list of all allergens set to true
