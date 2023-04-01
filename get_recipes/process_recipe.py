@@ -14,6 +14,11 @@ with urlopen('https://www.allrecipes.com/recipe/20967/amish-sugar-cakes/') as re
     total_time = total_time_parent_div.find("div", {"class": "mntl-recipe-details__value"})
     total_time = total_time.text.strip()
 
+    prep_time_div = soup.findAll("div", string="Prep Time:")
+    prep_time_parent_div = prep_time_div[0].parent
+    prep_time = prep_time_parent_div.find("div", {"class": "mntl-recipe-details__value"})
+    prep_time = prep_time.text.strip()
+
     serving_div = soup.findAll("div", string="Servings:")
     serving_parent_div = serving_div[0].parent
     serving = serving_parent_div.find("div", {"class": "mntl-recipe-details__value"})

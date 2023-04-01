@@ -44,6 +44,22 @@ def process_recipe(url):
             total_time = total_time_parent_div.find("div", {"class": "mntl-recipe-details__value"})
             total_time = total_time.text.strip()
 
+        prep_time_div = soup.findAll("div", string="Prep Time:")
+        if len(prep_time_div) == 0:
+            prep_time = "?"
+        else:
+            prep_time_parent_div = prep_time_div[0].parent
+            prep_time = prep_time_parent_div.find("div", {"class": "mntl-recipe-details__value"})
+            prep_time = prep_time.text.strip()
+
+        cook_time_div = soup.findAll("div", string="Cook Time:")
+        if len(cook_time_div) == 0:
+            cook_time = "?"
+        else:
+            cook_time_parent_div = cook_time_div[0].parent
+            cook_time = cook_time_parent_div.find("div", {"class": "mntl-recipe-details__value"})
+            cook_time = cook_time.text.strip()
+
         serving_div = soup.findAll("div", string="Servings:")
         if len(serving_div) == 0:
             serving = "?"
@@ -93,7 +109,7 @@ def process_recipe(url):
             calories = calories_parent_td.find("td", {"class": "type--dog-bold"})
             calories = calories.text.strip()
 
-    return (meal, name, total_time, serving, rating, ingredients, steps, calories)
+    return (meal, name, total_time, prep_time, cook_time, serving, rating, ingredients, steps, calories)
 
 source = urllib.request.urlopen('https://www.allrecipes.com/cuisine-a-z-6740455').read()
 soup = bs.BeautifulSoup(source,'lxml')
@@ -107,20 +123,21 @@ for url in links:
         for url in soup.find_all('a'):
             if 'recipe/' in str(url.get('href')):
 
-                meal, name, total_time, serving, rating, ingredients, steps, calories = process_recipe(str(url.get('href')))
+                meal, name, total_time, prep_time, cook_time, serving, rating, ingredients, steps, calories = process_recipe(str(url.get('href')))
 
                 recipe = {
                     'cuisine': cuisine,
                     'meal': meal,
                     'name': name,
                     'total_time': total_time,
+                    'prep_time': prep_time,
+                    'cook_time': cook_time,
+                    'difficulty': 4*float(prep_time)/float(total_time) if prep_time != "?" and total_time != "?" else "?",
                     'serving': serving,
                     'rating': rating,
                     'ingredients': ingredients,
                     'steps': steps,
                     'calories': calories
                 }
-
-                print(recipe)
 
                 insert_one_recipe(recipe)
