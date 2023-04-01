@@ -125,7 +125,7 @@ const GetStartedPage = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.cont}>
        <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
         <Text style={styles.title}>Get Started</Text>
@@ -593,6 +593,10 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
+    },
+    cont: {
+      flex: 1,
+      paddingTop: StatusBar.currentHeight,
     },
     check_contain: {
       flexDirection: 'row',
