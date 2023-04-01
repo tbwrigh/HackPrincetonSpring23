@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, ScrollView, StatusBar } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const RecipeDetail = () => {
-  const [recipe, setRecipe] = useState({});
+const RecipeDetail = (rp) => {
+  console.log("RecipeDetail")
+  console.log(rp)
 
-  useEffect(() => {
-    async function getRecipe() {
-      const recipe = await AsyncStorage.getItem('detail');
-      setRecipe(JSON.parse(recipe));
-    }
-    getRecipe();
-  }, []);
+  recipe = rp["route"]["params"]["rp"]
 
   return (
     <SafeAreaView style={styles.contain}>
@@ -19,17 +13,18 @@ const RecipeDetail = () => {
         <View style={styles.container}>
           <Text style={styles.name}>{recipe.name}</Text>
           <Text style={styles.subtitle}>{recipe.cuisine} {recipe.meal}</Text>
+          <Text style={styles.description}>Ingredients:</Text>
           {recipe.ingredients.map((ingredient, index) => {
               return (
                 <Text key={index} style={styles.ingredients}>{ingredient[1]} {ingredient[0]}</Text>
               );
             })}
+          <Text style={styles.description}>Instructions:</Text>
           {recipe.steps.map((step, index) => {
               return (
                 <Text key={index} style={styles.ingredients}>{step}</Text>
               );
             })}
-          <Text style={styles.nutrition}>{recipe.nutrition}</Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -55,7 +50,8 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 18,
-    marginBottom: 10
+    marginBottom: 10,
+    fontWeight: 'bold'
   },
   ingredients: {
     fontSize: 18,

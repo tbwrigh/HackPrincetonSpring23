@@ -27,8 +27,7 @@ const RecipeCard = ({ recipe }) => {
   };
 
   const showDetail = async () => {
-    await AsyncStorage.setItem('detail', JSON.stringify(recipe));
-    navigation.navigate("RecipeDetail");
+    navigation.navigate("RecipeDetail", { rp: recipe });
   }
 
   useEffect(() => {

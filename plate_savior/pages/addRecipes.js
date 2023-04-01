@@ -15,8 +15,8 @@ const AddRecipes = () => {
     skill = await AsyncStorage.getItem('skillLevel');
     time = await AsyncStorage.getItem('timeToCook');
     allergens = await AsyncStorage.getItem('allergens');
-    cuisines = await AsyncStorage.setItem('cuisines');
-    meals = await AsyncStorage.setItem('meals');
+    cuisines = await AsyncStorage.getItem('cuisines');
+    meals = await AsyncStorage.getItem('meals');
     allergens = JSON.parse(allergens);
     meals = JSON.parse(meals);
     cuisines = JSON.parse(cuisines);
