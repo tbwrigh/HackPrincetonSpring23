@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const RecipeDetail = () => {
@@ -14,25 +14,33 @@ const RecipeDetail = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.name}>{recipe.name}</Text>
-      <Text style={styles.subtitle}>{recipe.cuisine} {recipe.meal}</Text>
-      {recipe.ingredients.map((ingredient, index) => {
-          return (
-            <Text key={index} style={styles.ingredients}>{ingredient[1]} {ingredient[0]}</Text>
-          );
-        })}
-      {recipe.steps.map((step, index) => {
-          return (
-            <Text key={index} style={styles.ingredients}>{step}</Text>
-          );
-        })}
-      <Text style={styles.nutrition}>{recipe.nutrition}</Text>
-    </View>
+    <SafeAreaView style={styles.contain}>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.container}>
+          <Text style={styles.name}>{recipe.name}</Text>
+          <Text style={styles.subtitle}>{recipe.cuisine} {recipe.meal}</Text>
+          {recipe.ingredients.map((ingredient, index) => {
+              return (
+                <Text key={index} style={styles.ingredients}>{ingredient[1]} {ingredient[0]}</Text>
+              );
+            })}
+          {recipe.steps.map((step, index) => {
+              return (
+                <Text key={index} style={styles.ingredients}>{step}</Text>
+              );
+            })}
+          <Text style={styles.nutrition}>{recipe.nutrition}</Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  contain: {
+    flex: 1,
+    paddingTop: StatusBar.currentHeight,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
