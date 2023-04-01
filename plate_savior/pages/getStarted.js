@@ -106,7 +106,7 @@ const GetStartedPage = () => {
         </View>
       </View>
 
-      <View style={styles.contain}>
+      <View style={styles.check_contain}>
         <View style={styles.column}>
           <View style={styles.row}>
             <View style={styles.left}></View>
@@ -137,6 +137,8 @@ const GetStartedPage = () => {
             <Checkbox style={styles.checkbox} value={glutenChecked} onValueChange={setGlutenChecked} />
             <Text>Gluten</Text>
           </View>
+        </View>
+          <View style={styles.column}>
 
           <View style={styles.row}>
             <View style={styles.right}></View>
@@ -184,43 +186,32 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     contain: {
-      flex: 1,
+      flexDirection: 'row',
       backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
     },
+    check_contain: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
     column: {
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      justifyContent: 'flex-start',
-      marginTop: 20,
-      marginBottom: 20,
-      marginLeft: 30,
-      marginRight: 30, 
+      flex: 1,
+      padding: 0,
     },
     row: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        marginTop: 5,
-        marginBottom: 5,
-    },
-    checkbox: {
-        // margin: 8,
-        // marginLeft: 20,
-        marginRight: 10,
+      flexDirection: 'row',
+      alignItems: 'flex-start',
     },
     left: {
-      marginLeft: -80,
-      paddingBottom: -100,
-      paddingRight: 50,
-      paddingTop: 20,
+      flex: 1,
     },
     right: {
-      marginRight: 100,
-      lineHeight: 50,
-      paddingRight: 40,
-      paddingTop: 40,
+      flex: 1,
+    },
+    checkbox: {
+      marginRight: 10,
     },
     title: {
         fontSize: 30,
