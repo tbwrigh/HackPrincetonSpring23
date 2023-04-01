@@ -52,3 +52,9 @@ def search_query(cost: str, difficulty: str, cuisines: str):
     for r in res:
         r['_id'] = str(r['_id'])
     return {"recipes": res}
+
+@app.get("/recipe/{id}")
+def search_recipe(id: str):
+    res = collection.find_one({"_id": ObjectId(id)})
+    res['_id'] = str(res['_id'])
+    return {"recipe": res}
