@@ -3,6 +3,23 @@ from bs4 import BeautifulSoup
 import urllib.request
 from urllib.request import urlopen
 
+from pymongo import MongoClient
+def get_database():
+    # Provide the mongodb atlas url to connect python to mongodb using pymongo
+    client = MongoClient("mongodb+srv://user:oxRRaRUcFKOslIyM@hackprinceton.jweat5l.mongodb.net/?retryWrites=true&w=majority")
+
+    # Create the database for our example (we will use the same database throughout the tutorial
+    return client['hackprinceton']
+
+def get_collection():
+    # Create a collection in the database
+    return get_database()['recipes']
+
+def insert_one_recipe(recipe):
+    # Insert a document into the collection
+    return get_collection().insert_one(recipe)
+
+
 def process_recipe(url):
     with urlopen(url) as response:
         soup = BeautifulSoup(response, 'html.parser')
@@ -105,3 +122,5 @@ for url in links:
                 }
 
                 print(recipe)
+
+                insert_one_recipe(recipe)
