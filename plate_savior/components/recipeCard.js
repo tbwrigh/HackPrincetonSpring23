@@ -52,9 +52,10 @@ const RecipeCard = ({ recipe }) => {
         <Ionicons name={saved ? "checkmark" : "add"} size={24} color="white" />
       </TouchableOpacity>
       <TouchableOpacity onPress={showDetail}>
-      <Text>recipe</Text>
+      <Text style={styles.limw}>recipe</Text>
       <Text style={styles.title}>{recipe["name"]}</Text>
       <Text style={styles.subtitle}>{recipe["cuisine"]} {recipe["meal"]}</Text>
+      </TouchableOpacity>
       <View style={styles.infoContainer}>
         <View style={styles.info}>
           <Text style={styles.infoTitle}>Total Time:</Text>
@@ -73,7 +74,6 @@ const RecipeCard = ({ recipe }) => {
           <Text style={styles.infoText}>{recipe["calories"]}</Text>
         </View>
       </View>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -91,11 +91,14 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    marginRight: 30,
+    width: '83%',
   },
   subtitle: {
     fontSize: 18,
     color: '#808080',
     marginBottom: 10,
+    width: '83%',
   },
   infoContainer: {
     flexDirection: 'row',
@@ -116,11 +119,11 @@ const styles = StyleSheet.create({
   },
   saveButton: {
     position: 'absolute',
-    top: 10,
-    right: 10,
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    top: 5,
+    right: 5,
+    width: 45,
+    height: 45,
+    borderRadius: 23,
     backgroundColor: 'blue',
     justifyContent: 'center',
     alignItems: 'center',
@@ -133,6 +136,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
+  limw: {
+    width: '85%',
+  }
 });
 
 export default RecipeCard;
