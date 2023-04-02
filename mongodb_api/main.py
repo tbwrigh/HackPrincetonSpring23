@@ -42,16 +42,16 @@ def search_difficulty(difficulty: str):
         r['_id'] = str(r['_id'])
     return {"recipes": res}
 
-@app.get("/query/{cost}/{difficulty}/{cuisines}")
-def search_query(cost: str, difficulty: str, cuisines: str):
-    cuisines = cuisines.split(",")
-    cuisines = [c.title() for c in cuisines]
-    levels = ["easy", "medium", "hard", "expert"]
-    res = collection.find({"cost": { "$in": ["$"*i for i in range(len(cost))]}, "difficulty": {"$in": levels[:levels.index(difficulty)+1]}, "cuisine": {"$in": cuisines}})
-    res = [r for r in res]
-    for r in res:
-        r['_id'] = str(r['_id'])
-    return {"recipes": res}
+# @app.get("/query/{cost}/{difficulty}/{cuisines}")
+# def search_query(cost: str, difficulty: str, cuisines: str):
+#     cuisines = cuisines.split(",")
+#     cuisines = [c.title() for c in cuisines]
+#     levels = ["easy", "medium", "hard", "expert"]
+#     res = collection.find({"cost": { "$in": ["$"*i for i in range(len(cost))]}, "difficulty": {"$in": levels[:levels.index(difficulty)+1]}, "cuisine": {"$in": cuisines}})
+#     res = [r for r in res]
+#     for r in res:
+#         r['_id'] = str(r['_id'])
+#     return {"recipes": res}
 
 @app.get("/recipe/{id}")
 def search_recipe(id: str):
@@ -79,24 +79,27 @@ def search_type(meal: str):
     return {"recipes": res}
 
 @app.get("/query/{cost}/{difficulty}/{cuisines}/{meals}")
-def search_query(cost: str, difficulty: str, cuisines: str, meal: str):
+def search_query(cost: str, difficulty: str, cuisines: str, meals: str):
     cuisines = cuisines.split(",")
     cuisines = [c.title() for c in cuisines]
     levels = ["easy", "medium", "hard", "expert"]
-    meals = []
-    if ("apps" in meals):
-        meals = meals.extend(['Appetizers and Snacks', 'Dips and Spreads Recipes'])
-    elif ("sides" in meals):
-        meals = meals.extend(['Soup Recipes', 'Soups, Stews and Chili Recipes', 'Salad', 'Vegetable Soup Recipes', 'Side Dish', 'Yeast Bread Recipes', 'Quick Bread Recipes', 'Bread'])
+    ms = list()
+    if ("app" in meals):
+        ms.extend(['Appetizers and Snacks', 'Dips and Spreads Recipes'])
+    elif ("side" in meals):
+        ms.extend(['Soup Recipes', 'Soups, Stews and Chili Recipes', 'Salad', 'Vegetable Soup Recipes', 'Side Dish', 'Yeast Bread Recipes', 'Quick Bread Recipes', 'Bread'])
     elif ("breakfast" in meals):
-        meals = meals.extend(['Breakfast and Brunch'])
+        ms.extend(['Breakfast and Brunch'])
     elif ("lunch" in meals):
-        meals = meals.extend(['Slow Cooker', 'Main Dishes', 'Beef', 'Pork', 'Seafood Main Dishes', 'Vegetables', 'Pasta and Noodles', 'Casserole Recipes', 'Fruits and Vegetables', 'Seafood', 'Breakfast and Brunch', 'BBQ & Grilling', 'Meat and Poultry', 'Everyday Cooking', 'Soups, Stews and Chili Recipes', 'Pasta', 'Chicken', 'Cuisine', 'African', 'U.S Recipes', 'Thai', 'European', 'Japanese', 'Asian', 'Mexican', 'Korean', 'Indian', 'Latin American', 'Chinese', 'Italian', 'Spanish', 'Cuisine'])
+        ms.extend(['Slow Cooker', 'Main Dishes', 'Beef', 'Pork', 'Seafood Main Dishes', 'Vegetables', 'Pasta and Noodles', 'Casserole Recipes', 'Fruits and Vegetables', 'Seafood', 'Breakfast and Brunch', 'BBQ & Grilling', 'Meat and Poultry', 'Everyday Cooking', 'Soups, Stews and Chili Recipes', 'Pasta', 'Chicken', 'Cuisine', 'African', 'U.S Recipes', 'Thai', 'European', 'Japanese', 'Asian', 'Mexican', 'Korean', 'Indian', 'Latin American', 'Chinese', 'Italian', 'Spanish', 'Cuisine'])
     elif ("dinner" in meals):
-        meals = meals.extend(['Slow Cooker', 'Main Dishes', 'Beef', 'Pork', 'Seafood Main Dishes', 'Vegetables', 'Pasta and Noodles', 'Casserole Recipes', 'Fruits and Vegetables', 'Seafood', 'Dinner', 'BBQ & Grilling', 'Meat and Poultry', 'Everyday Cooking', 'Soups, Stews, and Chili Recipes', 'Pasta', 'Chicken', 'Cuisine', 'Christmas', 'Thanksgiving', 'Holidays and Events Recipes', 'African', 'U.S Recipes', 'Thai', 'European', 'Japanese', 'Asian', 'Mexican', 'Korean', 'Indian', 'Latin American', 'Chinese', 'Italian', 'Spanish', 'Cuisine'])
-    elif ("desserts" in meals):
-        meals = meals.extend(['Fruit Bread Recipes', 'Desserts', 'Pies', 'Cookies'])
-    res = collection.find({"cost": { "$in": ["$"*i for i in range(len(cost))]}, "difficulty": {"$in": levels[:levels.index(difficulty)+1]}, "cuisine": {"$in": cuisines}, "meal": { "$in": meals}})
+        ms.extend(['Slow Cooker', 'Main Dishes', 'Beef', 'Pork', 'Seafood Main Dishes', 'Vegetables', 'Pasta and Noodles', 'Casserole Recipes', 'Fruits and Vegetables', 'Seafood', 'Dinner', 'BBQ & Grilling', 'Meat and Poultry', 'Everyday Cooking', 'Soups, Stews, and Chili Recipes', 'Pasta', 'Chicken', 'Cuisine', 'Christmas', 'Thanksgiving', 'Holidays and Events Recipes', 'African', 'U.S Recipes', 'Thai', 'European', 'Japanese', 'Asian', 'Mexican', 'Korean', 'Indian', 'Latin American', 'Chinese', 'Italian', 'Spanish', 'Cuisine'])
+    elif ("dessert" in meals):
+        ms.extend(['Fruit Bread Recipes', 'Desserts', 'Pies', 'Cookies'])
+    print("\n\n\n")
+    print(ms)
+    print("\n\n\n")
+    res = collection.find({"cost": { "$in": ["$"*i for i in range(len(cost))]}, "difficulty": {"$in": levels[:levels.index(difficulty)+1]}, "cuisine": {"$in": cuisines}, "meal": { "$in": ms}})
     res = [r for r in res]
     for r in res:
         r['_id'] = str(r['_id'])
