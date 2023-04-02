@@ -46,7 +46,7 @@ const AddRecipes = () => {
       alignItems: 'center',
     }}
     >
-      {data.map((recipe) => (
+      {data && data.map((recipe) => (
         <RecipeCard recipe={recipe} key={recipe["_id"]} />
       ))}
     </ScrollView>

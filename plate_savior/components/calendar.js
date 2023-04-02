@@ -121,7 +121,7 @@ const Calendar = () => {
   return (
     <View style={styles.container}>
       {days.map((day, index) => (
-        <Day key={index} day={day} recipeIds={recipeIds} meals={dayRecipe[day]} />
+        <Day key={day} day={day} recipeIds={recipeIds} meals={dayRecipe[day]} />
       ))}
     </View>
   );
