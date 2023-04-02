@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import RecipeCard from './recipeCard';
 
-const Day = ({ day, recipeIds }) => {
+const Day = ({ day, recipeIds, meals }) => {
   const navigation = useNavigation();
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
@@ -20,13 +21,37 @@ const Day = ({ day, recipeIds }) => {
     }
   }
 
+  console.log(day)
+
+  if (meals) {
+    meals = [...new Set(meals)]
+    // console.log(meals)
+    let m = []
+    for (let meal in meals) {
+        m.push(JSON.parse(meals[meal]));
+    }
+    meals = m;
+    // console.log(m)
+  }
+
   return (
-    <View style={styles.dayContainer}>
-      <Text style={styles.dayText}>{day}</Text>
+    <View style={styles.container}>
+        <View style={styles.dayContainer}>
+        <Text style={styles.dayText}>{day}</Text>
       <TouchableOpacity onPress={() => handleRecipeSelect(day)}>
         <Text style={styles.buttonText}>Add Recipe</Text>
       </TouchableOpacity>
-      {selectedRecipe && <Text>Selected Recipe: {selectedRecipe}</Text>}
+    </View>
+
+    <View>
+    <ScrollView style={styles.recipeContainer}>
+      {meals && meals.map(recipe => (
+        <RecipeCard key={recipe.id} recipe={recipe} style={styles.recipecard} />
+      ))}
+
+        </ScrollView>
+    </View>
+      
     </View>
   );
 };
@@ -47,6 +72,7 @@ const Calendar = () => {
                 setRecipeIds("")
             }
         }
+
         async function getDayRecipe() {
             let day = await AsyncStorage.getItem('selectedDay');
             let recipe = await AsyncStorage.getItem('selectedRecipe');
@@ -71,13 +97,23 @@ const Calendar = () => {
             }
         }
 
+        async function recipeCards() {
+            let dr = await AsyncStorage.getItem('dayRecipe');
+            if (dr != null) {
+                dayRecipe = JSON.parse(dr);
+                // console.log(dayRecipe);
+                setDayRecipe(dayRecipe);
+            }
+        }
+
         getRecipes();
         getDayRecipe();
+        recipeCards();
     }, []);
 
 
     recipeIds = recipeIds.split(";");
-    console.log(recipeIds)
+    // console.log(recipeIds)
 
 
 
@@ -85,7 +121,7 @@ const Calendar = () => {
   return (
     <View style={styles.container}>
       {days.map((day, index) => (
-        <Day key={index} day={day} recipeIds={recipeIds} />
+        <Day key={index} day={day} recipeIds={recipeIds} meals={dayRecipe[day]} />
       ))}
     </View>
   );
@@ -96,6 +132,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 20,
+    width: '100%',
   },
   dayContainer: {
     flexDirection: 'row',
@@ -113,6 +151,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
   },
+  recipecard: {
+    width: '95%',
+    },
 });
 
 export default Calendar;

@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { ScrollView, Text, StyleSheet } from 'react-native';
 import Calendar from '../components/calendar';
 
 const PlanMeals = () => {
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} 
+    contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+    >
       < Calendar />
-    </View>
+    </ScrollView>
 
   );
 };
@@ -16,8 +18,8 @@ const PlanMeals = () => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
+      marginTop:30,
+      width: '100%',
     },
 
   });
