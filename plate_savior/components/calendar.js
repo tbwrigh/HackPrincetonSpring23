@@ -119,7 +119,8 @@ const Calendar = () => {
 
 
   return (
-    <View style={styles.container}>
+    
+    <View style={styles.cont}>
       {days.map((day, index) => (
         <Day key={day} day={day} recipeIds={recipeIds} meals={dayRecipe[day]} />
       ))}
@@ -130,29 +131,36 @@ const Calendar = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginLeft: 20,
     marginTop: 20,
+    width: '100%',
+  },
+  cont: {
+    flex: 5,
+    justifyContent: 'center',
+    marginTop: 2,
     width: '100%',
   },
   dayContainer: {
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 20,
   },
   dayText: {
     marginRight: 10,
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
   },
   buttonText: {
     backgroundColor: 'blue',
     color: 'white',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 7,
   },
   recipecard: {
-    width: '95%',
+    width: '125%',
+    marginRight: 50,
     },
 });
 
