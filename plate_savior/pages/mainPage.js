@@ -1,9 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useNavigation } from "@react-navigation/native";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 import AddRecipes from './addRecipes';
 import PlanMeals from './planMeals';
@@ -15,12 +16,17 @@ const Tab = createBottomTabNavigator();
 const MainPage = () => {
     const navigation = useNavigation();
 
-    useEffect(() => {navigation.setOptions({
+    const [saved, setSaved] = useState(false);
+    const [key, setKey] = useState(0);
+
+    useEffect(() => {
+      navigation.setOptions({
         headerLeft: null,
       })}, []);
 
   return (
     <Tab.Navigator
+    key={key}
     screenOptions={({ route }) => ({
       tabBarIcon: ({ focused, color, size }) => {
         let iconName;
@@ -41,7 +47,7 @@ const MainPage = () => {
           size={24} 
           color="black" 
           style={{marginRight: 10}} 
-          onPress={() => navigation.navigate('Settings')}
+          onPress={() => setKey(key + 1)}
         />
       ),
     })}

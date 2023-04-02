@@ -9,7 +9,7 @@ const ShoppingList = () => {
   useEffect(() => {
     async function fetchDayRecipe() {
       const dayRecipeJson = await AsyncStorage.getItem('dayRecipe');
-      if (!dayRecipeJson) return;
+      if (dayRecipeJson == null) return;
       const dayRecipeObj = JSON.parse(dayRecipeJson);
       setDayRecipe(dayRecipeObj);
     }
@@ -18,7 +18,7 @@ const ShoppingList = () => {
   }, []);
 
   useEffect(() => {
-    if (!dayRecipe) return;
+    if (dayRecipe == null) return;
     const ingredientList = [];
 
     for (const [day, recipes] of Object.entries(dayRecipe)) {
@@ -48,14 +48,14 @@ const ShoppingList = () => {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Ingredient List</Text>
-      {ingredients ? ingredients.map((ingredient, index) => (
+      {ingredients.map((ingredient, index) => (
         <View style={styles.bulletPointRow}>
           <Text style={styles.bulletPoint}>• </Text>
           <Text key={index} style={styles.listItem}>
             {`${ingredient.name}`}
           </Text>
         </View>
-      )) : <Text>Nothing Planned Yet</Text>}
+      ))}
     </ScrollView>
   );
 };

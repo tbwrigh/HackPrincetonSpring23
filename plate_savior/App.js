@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { AsyncStorage } from 'react-native';
 
@@ -11,7 +11,10 @@ import SelectRecipe from './pages/selectRecipe';
 const Stack = createStackNavigator();
 
 export default function App() {
+  
   let route = 'GetStartedPage';
+
+  const [key, setKey] = useState(0);
 
   useEffect(() => {
     checkSetup();
@@ -35,10 +38,10 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer key={key}>
       <Stack.Navigator initialRouteName={route}> 
         <Stack.Screen name="GetStartedPage" component={GetStartedPage} options={{ headerShown: false }} />
-        <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
+        <Stack.Screen key={key} name="Main" component={Main} options={{ headerShown: false }} />
         <Stack.Screen name="Settings" component={GetStartedPage} options={{ headerShown: false }} />
         <Stack.Screen name="RecipeDetail" component={RecipeDetail} initialParams={{ r: {name: "dog"} }}  />
         <Stack.Screen name="SelectRecipe" component={SelectRecipe} initialParams={{rs: {name: "dog"}}} />
@@ -46,3 +49,7 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+App.navigationOptions = {
+  header: null,
+};

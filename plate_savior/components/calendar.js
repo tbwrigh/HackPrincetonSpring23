@@ -4,9 +4,16 @@ import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RecipeCard from './recipeCard';
 
+
 const Day = ({ day, recipeIds, meals }) => {
+
   const navigation = useNavigation();
   const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [dummyState, setDummyState] = useState(false);
+
+    useEffect(() => {
+        const updateLoop = setInterval(() => {setDummyState(!dummyState)}, 2000);
+    }, []);
 
   const handleRecipeSelect = () => {
     storeDay(day);
@@ -33,33 +40,34 @@ const Day = ({ day, recipeIds, meals }) => {
     meals = m;
     // console.log(m)
   }
-
-  return (
-    <View style={styles.container}>
-        <View style={styles.dayContainer}>
-        <Text style={styles.dayText}>{day}</Text>
-      <TouchableOpacity onPress={() => handleRecipeSelect(day)}>
-        <Text style={styles.buttonText}>Add Recipe</Text>
-      </TouchableOpacity>
-    </View>
-
-    <View>
-    <ScrollView style={styles.recipeContainer}>
-      {meals && meals.map(recipe => (
-        <RecipeCard key={recipe.id} recipe={recipe} style={styles.recipecard} />
-      ))}
-
-        </ScrollView>
-    </View>
-      
-    </View>
-  );
+    return (
+        <View style={styles.container}>
+            <View style={styles.dayContainer}>
+            <Text style={styles.dayText}>{day}</Text>
+          <TouchableOpacity onPress={() => handleRecipeSelect(day)}>
+            <Text style={styles.buttonText}>Add Recipe</Text>
+          </TouchableOpacity>
+        </View>
+    
+        <View happy={{dummyState}}>
+        <ScrollView style={styles.recipeContainer}>
+          {meals && meals.map(recipe => (
+            <RecipeCard key={recipe.id} recipe={recipe} style={styles.recipecard} />
+          ))}
+    
+            </ScrollView>
+        </View>
+          
+        </View>
+      );
+    
 };
 
 const Calendar = () => {
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   let [recipeIds, setRecipeIds] = useState("");
   let [dayRecipe, setDayRecipe] = useState({});
+  let [dummyState, setDummyState] = useState(false);
 
     // make method to get saved_recipes from AsyncStorage
     useEffect(() => {  
@@ -109,6 +117,8 @@ const Calendar = () => {
         getRecipes();
         getDayRecipe();
         recipeCards();
+        const updateLoop = setInterval(() => {setDummyState(!dummyState)}, 5000)
+
     }, []);
 
 

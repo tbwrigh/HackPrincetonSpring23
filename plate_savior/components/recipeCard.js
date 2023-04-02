@@ -11,6 +11,7 @@ const RecipeCard = ({ recipe }) => {
 
   const [saved, setSaved] = useState(false);
   const [removeButton, setRemoveButton] = useState(false);
+  const [dummyState, setDummyState] = useState(false);
 
   const handleSaveRecipe = async () => {
     if (removeButton) {
@@ -46,6 +47,7 @@ const RecipeCard = ({ recipe }) => {
   const showDetail = async () => {
     navigation.navigate("RecipeDetail", { rp: recipe });
   }
+
 
   useEffect(() => {
     async function checkSaved() {
@@ -90,6 +92,7 @@ const RecipeCard = ({ recipe }) => {
         <View style={styles.info}>
           <Text style={styles.infoTitle}>Calories:</Text>
           <Text style={styles.infoText}>{recipe["calories"]}</Text>
+          <Text style={{ display: "none" }}>{dummyState}</Text>
         </View>
       </View>
     </View>
