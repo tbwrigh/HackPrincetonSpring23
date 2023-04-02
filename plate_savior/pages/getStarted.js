@@ -89,6 +89,9 @@ const GetStartedPage = () => {
 
   const handleSetUpPress = async () => {
     try {
+      if (!checkTextInput() || !checking()) {
+        return;
+      }
       // Save values to async storage
       await AsyncStorage.setItem('price', price.toString());
       await AsyncStorage.setItem('skillLevel', skillLevel.toString());
@@ -321,6 +324,38 @@ const GetStartedPage = () => {
       AsyncStorage.clear();
     }
   };
+  const checkTextInput = () => {
+    //Check for the Name TextInput
+    if (text.length == 0) {
+      alert('Please Answer to Continue');
+      return false;
+    }
+    return true;
+  }
+
+  function checking(){
+    let x = 0;
+    if (!noneChecked && !dairyChecked && !eggsChecked && !fishChecked && !glutenChecked && !peanutsChecked && !shellfishChecked && !soyChecked && !treeChecked && !wheatChecked) {
+      x++;
+    } 
+    if (!mexicanChecked && !italianChecked && !chineseChecked && !indianChecked && !germanChecked && !greekChecked && !filipinoChecked && !japaneseChecked && !amishChecked && !argentinianChecked && !ausnzChecked && !austrianChecked && !bangladeshiChecked && !belgianChecked && !brazilianChecked && !cajunChecked && !canadianChecked && !chileanChecked && !colombianChecked && !cubanChecked && !danishChecked && !dutchChecked && !finnishChecked && !frenchChecked && !indonesianChecked && !israeliChecked && !jamaicanChecked && !jewishChecked && !koreanChecked && !lebaneseChecked && !malaysianChecked && !norwegianChecked && !pakistaniChecked && !persianChecked && !peruvianChecked && !polishChecked && !portugueseChecked && !puertoChecked && !russianChecked && !scandinavianChecked && !soulChecked && !safricanChecked && !southernChecked && !spanishChecked && !swedishChecked && !swissChecked && !texChecked && !thaiChecked && !turkishChecked && !vietnameseChecked){
+      x++;
+    }
+    if (!breakfastChecked && !lunchChecked && !dinnerChecked && !appsChecked && !sidesChecked && !dessertChecked){
+      x++;
+    }
+    
+  if (x >= 1){
+    alert("please check at least one box in each section")
+    return false;     
+  }
+  return true;
+}
+    
+
+
+  // }
+  // }
 
   return (
     <SafeAreaView style={styles.cont}>
