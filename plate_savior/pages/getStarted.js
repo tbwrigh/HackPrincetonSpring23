@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Slider, Button, StatusBar, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Slider, Button, StatusBar, SafeAreaView, ScrollView, Image } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -311,8 +311,16 @@ const GetStartedPage = () => {
   return (
     <SafeAreaView style={styles.cont}>
        <ScrollView style={styles.scrollView}>
+      
+      <View style={styles.container}>
+        <Image
+          style={{ width: 250, height: 250 }}
+          source={require('../assets/plate_savior.png')}
+        />
+
+      </View>
+
       <View style={styles.top}>
-        <Text style={styles.title}>Get Started</Text>
         <View style={styles.sliderContainer}>
           <Text style={styles.sliderLabel}>Price Range:</Text>
           <Slider
