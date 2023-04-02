@@ -10,20 +10,37 @@ const RecipeCard = ({ recipe }) => {
   const navigation = useNavigation();
 
   const [saved, setSaved] = useState(false);
+  const [removeButton, setRemoveButton] = useState(false);
 
   const handleSaveRecipe = async () => {
-    try {
-      let recipes = await AsyncStorage.getItem('saved_recipes');
-      if (recipes == null) {
-        recipes = recipe["_id"];
-      }else {
-        recipes+=";"+recipe["_id"];
+    if (removeButton) {
+      try {
+        let recipes = await AsyncStorage.getItem('saved_recipes');
+        if (recipes != null && recipes.includes(recipe["_id"])) {
+          r = recipes.split(";");
+          r = r.filter(item => item !== recipe["_id"]);
+          recipes = r.join(";");
+          await AsyncStorage.setItem('saved_recipes', recipes);
+        }
+        setSaved(false);
+      } catch (error) {
+        console.log(error);
       }
-      await AsyncStorage.setItem('saved_recipes', recipes);
-      setSaved(true);
-    } catch (error) {
-      console.log(error);
+    }else {
+      try {
+        let recipes = await AsyncStorage.getItem('saved_recipes');
+        if (recipes == null) {
+          recipes = recipe["_id"];
+        }else {
+          recipes+=";"+recipe["_id"];
+        }
+        await AsyncStorage.setItem('saved_recipes', recipes);
+        setSaved(true);
+      } catch (error) {
+        console.log(error);
+      }
     }
+    setRemoveButton(!removeButton);
   };
 
   const showDetail = async () => {
@@ -37,6 +54,7 @@ const RecipeCard = ({ recipe }) => {
         recipes = recipes.split(";");
         if (recipes.includes(recipe["_id"])) {
           setSaved(true);
+          setRemoveButton(true);
         }
       }
     }
