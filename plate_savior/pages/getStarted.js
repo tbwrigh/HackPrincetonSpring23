@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Slider, Button, StatusBar, SafeAreaView, ScrollView, Image } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Slider, Button, StatusBar, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -7,7 +7,11 @@ import Checkbox from 'expo-checkbox';
 
 
 const GetStartedPage = () => {
+  const dev_mode = true;
+
   const navigation = useNavigation();
+
+  const [logoPresses, setLogoPresses] = useState(5);
 
   const [price, setPrice] = useState(1);
   const [skillLevel, setSkillLevel] = useState(1);
@@ -308,10 +312,21 @@ const GetStartedPage = () => {
     }
   };
 
+  const logoPress = () => {
+    setLogoPresses(logoPresses - 1);
+    if (logoPresses == 0 && dev_mode) {
+      setLogoPresses(5);
+      console.log("resetting async storage")
+      // remove all async storage
+      AsyncStorage.clear();
+    }
+  };
+
   return (
     <SafeAreaView style={styles.cont}>
        <ScrollView style={styles.scrollView}>
       
+      <TouchableOpacity onPress={logoPress}>
       <View style={styles.container}>
         <Image
           style={{ width: 250, height: 250 }}
@@ -319,6 +334,8 @@ const GetStartedPage = () => {
         />
 
       </View>
+      </TouchableOpacity>
+      
 
       <View style={styles.top}>
         <View style={styles.sliderContainer}>
