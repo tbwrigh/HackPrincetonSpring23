@@ -21,12 +21,13 @@ const AddRecipes = () => {
     meals = JSON.parse(meals);
     cuisines = JSON.parse(cuisines);
     cuisine = cuisines.join(",");
+    meal = meals.join(",") 
 
     skill = skill == 1 ? "easy" : skill == 2 ? "medium" : skill == 3 ? "hard" : "expert";
 
     // fetch recipes from api
     // make get request to 10.25.13.105 
-    res = await fetch('http://10.25.13.105:3000/query/' + "$".repeat(cost) + "/" + skill + "/" + cuisine);
+    res = await fetch('http://10.25.13.105:3000/query/' + "$".repeat(cost) + "/" + skill + "/" + cuisine + "/" + meal);
     // console.log(res);
     recipes = await res.json();
     // console.log(recipes["recipes"]);
