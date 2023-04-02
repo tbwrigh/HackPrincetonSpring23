@@ -29,7 +29,7 @@ const MainPage = () => {
           iconName = 'add-circle';
         } else if (route.name === 'Plan') {
           iconName = 'calendar';
-        } else if (route.name === 'Shop') {
+        } else if (route.name === 'List') {
           iconName = 'cart';
         }
 
@@ -52,7 +52,7 @@ const MainPage = () => {
     >
       <Tab.Screen name="Add" component={AddRecipes} />
       <Tab.Screen name="Plan" component={PlanMeals} />
-      <Tab.Screen name="Shop" component={ShoppingList} />
+      <Tab.Screen name="List" component={ShoppingList} />
     </Tab.Navigator>
   );
 };
