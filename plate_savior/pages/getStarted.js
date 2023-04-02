@@ -16,6 +16,7 @@ const GetStartedPage = () => {
   const [price, setPrice] = useState(1);
   const [skillLevel, setSkillLevel] = useState(1);
   const [timeToCook, setTimeToCook] = useState(0);
+  
   const [noneChecked, setNoneChecked] = useState(false);
   const [dairyChecked, setDairyChecked] = useState(false);
   const [eggsChecked, setEggsChecked] = useState(false);
@@ -324,6 +325,7 @@ const GetStartedPage = () => {
       AsyncStorage.clear();
     }
   };
+
   const checkTextInput = () => {
     //Check for the Name TextInput
     if (text.length == 0) {
@@ -346,16 +348,11 @@ const GetStartedPage = () => {
     }
     
   if (x >= 1){
-    alert("please check at least one box in each section")
+    alert("Please Check at Least One Box in Each Section")
     return false;     
   }
   return true;
 }
-    
-
-
-  // }
-  // }
 
   return (
     <SafeAreaView style={styles.cont}>
